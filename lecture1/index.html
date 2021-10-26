@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      function Result() {}
+
+      class GuGudan extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            first: Math.ceil(Math.random() * 9),
+            second: Math.ceil(Math.random() * 9),
+            value: "",
+            result: "",
+          };
+        }
+
+        get isRight() {
+          const { first, second, value } = this.state;
+          return first * second === Number(value);
+        }
+
+        get getRenValue() {
+          return Math.ceil(Math.random() * 9);
+        }
+
+        handleSubmit = (event) => {
+          event.preventDefault();
+          const { value, first, second } = this.state;
+          if (this.isRight) {
+            this.setState((prevState) => ({
+              result: "정답" + prevState.value,
+              first: this.getRenValue,
+              second: this.getRenValue,
+              value: "",
+            }));
+          } else {
+            this.setState({ result: "땡" });
+          }
+					this.input.focus();
+        };
+
+        handleChange = (event) => {
+          this.setState({ value: event.target.value });
+        };
+
+				input;
+				onRefInput = (c) => this.input = c;
+
+        render() {
+          const { first, second, value, result } = this.state;
+          return (
+            <>
+              <form onSubmit={this.handleSubmit}>
+                <label htmlFor="userInput">
+                  {first}곱하기 {second}는?
+                </label>
+                <input
+									ref={this.onRefInput}
+                  id="userInput"
+                  type="text"
+                  value={value}
+                  onChange={this.handleChange}
+                />
+                <input type="submit" value="입력!" />
+              </form>
+              <div>{result}</div>
+            </>
+          );
+        }
+      }
+    </script>
+    <script type="text/babel">
+      ReactDOM.render(<GuGudan />, document.querySelector("#root"));
+    </script>
+  </body>
+</html>
