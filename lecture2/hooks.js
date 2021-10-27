@@ -1,4 +1,4 @@
-const { useState, useRef } = React;
+import React ,{useState, useRef} from 'react';
 
 function Hooks() {
   const [first, setFirst] = useState(Math.ceil(Math.random() * 9));
@@ -42,4 +42,4 @@ function Hooks() {
   );
 }
 
-ReactDOM.render(<Hooks />, document.querySelector("#root"));
+export default Hooks;

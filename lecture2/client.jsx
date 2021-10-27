@@ -1,5 +1,5 @@
-const React = require('react');
-const ReactDom = require('react-dom');
-import WordRelay from './WordRelay';
+import React from 'react';
+import ReactDom from 'react-dom';
+import Hooks from './hooks';
 
-ReactDom.render(<WordRelay />, document.getElementById('root'));
+ReactDom.render(<Hooks />, document.getElementById('root'));
