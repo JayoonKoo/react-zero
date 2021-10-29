@@ -11,7 +11,7 @@ module.exports = {
 	},
 
 	entry: {
-		app: ['./client.jsx', 'react-refresh/runtime', 'webpack-hot-middleware/client'],
+		app: ['./client.jsx'],
 	}, // 입력
 
 	module: {
@@ -27,22 +27,21 @@ module.exports = {
 	target: ['web', 'es5'],
 
 	output: {
-		path: path.join(__dirname, 'dist'),
+		// path: path.join(__dirname, 'dist'),
 		filename: 'app.js',
-		publicPath: '/dist',
+		publicPath: '/',
 		clean: true
 	}, // 출력
 
 	plugins: [
 		new RefreshWebpackPlugin(),
-		// new HtmlPlugin({
-		// 	template: './index.html'
-		// }),
+		new HtmlPlugin({
+			template: './index.html'
+		}),
 	],
 
 	devServer: {
-		devMiddleware: {publicPath: '/dist'},
-		static: {directory: path.resolve(__dirname)},
+		devMiddleware: {publicPath: '/'},
 		hot: true
 	}
 }
