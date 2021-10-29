@@ -5,7 +5,8 @@
   "main": "hooks.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack-dev-server --mode development"
+    "dev": "webpack-dev-server --mode development",
+    "dev2": "webpack server --env development"
   },
   "author": "",
   "license": "ISC",
@@ -20,10 +21,15 @@
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
     "@babel/runtime-corejs3": "^7.15.4",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
     "babel-loader": "^8.2.3",
     "html-webpack-plugin": "^5.5.0",
+    "react-hot-loader": "^4.13.0",
+    "react-refresh": "^0.10.0",
     "webpack": "^5.60.0",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.3.1"
+    "webpack-dev-server": "^4.3.1",
+    "webpack-hot-middleware": "^2.25.1",
+    "webpack-plugin-serve": "^1.5.0"
   }
 }
