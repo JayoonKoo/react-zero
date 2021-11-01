@@ -1,8 +1,8 @@
 {
-  "name": "lecture2",
+  "name": "lecture3",
   "version": "1.0.0",
   "description": "",
-  "main": "hooks.js",
+  "main": "client.jsx",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack server --env development"
