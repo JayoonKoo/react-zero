@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState, memo } from 'react'
 import Tries from '~/components/Tries';
 
 const getAnswer = () => {
@@ -15,10 +15,11 @@ export default function NumberBaseball() {
 	const [result, setResult] = useState("");
 	const [tries, setTries] = useState([]);
 	const [answer, setAnswer] = useState(getAnswer());
+	const inputRef = useRef(null);
 
-	const init = () => {
+	const init = (answer) => {
 		setValue('');
-		setResult('');
+		answer ? setResult(answer) : setResult('');
 		setTries([]);
 		setAnswer(getAnswer());
 	}
@@ -33,7 +34,8 @@ export default function NumberBaseball() {
 		} else { // 틀렸을 경우
 			if (tries.length >= 9) {
 				alert('10번 이상 실패하여 패배했습니다.');
-				init()
+				setResult(`정답은 ${answer}`)
+				init(answer)
 			} else {
 				let strike = 0;
 				let ball = 0;
@@ -43,19 +45,21 @@ export default function NumberBaseball() {
 					else if (answer.includes(v)) ball += 1;
 				})
 				const newResult =`${strike} 스트라이크, ${ball} 볼!` 
-				setResult(newResult);
 				setTries((prevTries) => [...prevTries, {id: value+Date.now(), value, result: newResult}]);
 				setValue('');
 			}
 		}
+
+		inputRef.current.focus();
 	}
-	console.log(`answer`, answer);
+
+	const handleChange = (e) => {setValue(e.target.value)}
 
 	return (
 		<>
 			<h1>{result}</h1>
 			<form onSubmit={handleSubmit}>
-				<input type="text" maxLength="4" value={value} onChange={(e)=>setValue(e.target.value)}/>
+				<input ref={inputRef} type="text" maxLength="4" value={value} onChange={handleChange}/>
 				<button type="submit">확인</button>
 			</form>
 			<div>{tries.length} 회 시도.</div>

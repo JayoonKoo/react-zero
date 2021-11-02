@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { memo } from "react";
 
-export default function Tries({tryInfo}) {
-	const {value, result} = tryInfo;
+const Tries = ({tryInfo}) => {
+  const { value, result } = tryInfo;
 
-	return (
-		<li>{value}로 시도했고, {result}</li>
-	)
-}
+  return (
+    <li>
+      {value}로 시도했고, {result}
+    </li>
+  );
+};
+
+export default memo(Tries);
