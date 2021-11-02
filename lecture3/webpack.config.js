@@ -1,15 +1,15 @@
 const path = require("path");
 const HtmlPlugin = require('html-webpack-plugin');
 const RefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+// process.env.NODE_ENV = 'production';
 
 module.exports = {
-	name: 'word-relay-setting',
 	mode: 'development',
 	devtool: 'eval',
 	resolve: {
 		extensions: ['.js', '.jsx', 'css', 'scss'],
 		alias: {
-			'~': path.resolve(__dirname, '/')
+			'~': path.resolve(__dirname)
 		}
 	},
 
