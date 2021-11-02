@@ -1,0 +1,17 @@
+#screen {
+  width: 300px;
+  height: 200px;
+  text-align: center;
+  // 사용자가 선택하지 못하도록 막는다. 드레그 못하는 정도? all 은 전체 드래그
+  user-select: none;
+  &.waiting {
+    background-color: aqua;
+  }
+  &.ready {
+    background-color: red;
+    color: white;
+  }
+  &.now {
+    background-color: greenyellow;
+  }
+}
