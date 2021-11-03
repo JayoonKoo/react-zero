@@ -1,0 +1,15 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+		"plugin:react/recommended"
+  ],
+  "parser": "@babel/eslint-parser",
+  "rules": {
+    "semi": ["error", "alwyas"],
+    "quotes": ["error", "single"]
+  }
+}
